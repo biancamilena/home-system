@@ -7,7 +7,7 @@ class Alarm:
         self.alarmOn = False
         self.alarmRinging = False
         pygame.mixer.init()
-        pygame.mixer.music.load("assets/alarm.mp")
+        pygame.mixer.music.load("otherStuff/alarm.mp3")
         
     def toggle(self):
         self.alarmOn = not self.alarmOn

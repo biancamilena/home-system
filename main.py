@@ -58,14 +58,14 @@ while running:
     
     #text
     timeTxt = font.render(now,True,textCol)
-    time_rect = timeTxt.get_rect(center=screen.get_width()//2, screen.get_height()//2))
+    time_rect = timeTxt.get_rect(center=(screen.get_width()//2, screen.get_height()//2))
     screen.blit(timeTxt, time_rect)
     
     #alarm time
     alarm_font = pygame.font.SysFont(None,40)
-    alarmTxt = alarm_font.render(f"Alarm: {alarm.alarm_time}", True, textCol)
-    alarm_rect = alarm_text.get_rect(center=screen.get_width()//2, screen.get_height()//2 + 60))
-    screen.blit(alarm_text, alarm_rect)
+    alarmTxt = alarm_font.render(f"Alarm: {alarm.alarmTime}", True, textCol)
+    alarm_rect = alarmTxt.get_rect(center=(screen.get_width()//2, screen.get_height()//2 + 60))
+    screen.blit(alarmTxt, alarm_rect)
     
     #draw buttons
     if alarm.alarmRinging:
