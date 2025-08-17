@@ -2,15 +2,21 @@ import pygame
 from datetime import datetime, timedelta
 
 class Alarm:
-    def __init__(self, time="7:30"):
-        self.alarmTime = time
+    def __init__(self):
+        self.alarmTime = None
         self.alarmOn = False
         self.alarmRinging = False
         pygame.mixer.init()
         pygame.mixer.music.load("otherStuff/alarm.mp3")
+
+    def setTime(self, time_str: str):
+        self.alarmTime = time_str
+        self.alarmOn = True
         
     def toggle(self):
         self.alarmOn = not self.alarmOn
+        if not self.alarmOn:
+            self.turnOff()
         
     def checkAlarm(self):
         if self.alarmOn and not self.alarmRinging:
