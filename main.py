@@ -1,5 +1,5 @@
 import pygame
-import datetime
+from datetime import datetime
 from gui_elements import Button
 from alarm_system import Alarm
 from alarm_input import alarmInputScreen
@@ -17,12 +17,14 @@ pygame.display.set_caption("Clock and Alarm")
 
 #clock setup
 font = pygame.font.SysFont(None, 80)
+dateFont = pygame.font.SysFont(None,40)
+dayFont = pygame.font.SysFont(None, 60)
 clock = pygame.time.Clock()
 alarm = Alarm()
 
 #buttons
-toggleBtn = Button((20,260,100,40), btnCol, "Is Off", btnTxtCol)
-setBtn = Button((140,260,120,40), btnCol, "Set Alarm", btnTxtCol)
+toggleBtn = Button((40,260,100,40), btnCol, "Is Off", btnTxtCol)
+setBtn = Button((160,260,120,40), btnCol, "Set Alarm", btnTxtCol)
 snoozeBtn = Button((240,230,100,40), btnCol, "Snooze", btnTxtCol)
 turnOffBtn = Button((360,230,100,40), btnCol, "Turn Off", btnTxtCol)
 
@@ -57,12 +59,25 @@ while running:
     screen.fill(backgroundCol)
     
     #get time
-    now = datetime.datetime.now().strftime("%H:%M:%S")
+    now = datetime.now().strftime("%H:%M:%S")
+    current_datetime = datetime.now()
+    currentDate = current_datetime.date()
+    currentDay = current_datetime.strftime("%A")
     
-    #text
+    #time text
     timeTxt = font.render(now,True,textCol)
-    time_rect = timeTxt.get_rect(center=(screen.get_width()//2-75, screen.get_height()//2))
+    time_rect = timeTxt.get_rect(center=(screen.get_width()//2-90, screen.get_height()//2+30))
     screen.blit(timeTxt, time_rect)
+
+    #date text
+    dateTxt = dateFont.render(current_datetime.strftime("%b %d, %Y"), True, textCol)
+    date_rect = dateTxt.get_rect(center=(screen.get_width()//2-90, screen.get_height()//2-20))
+    screen.blit(dateTxt, date_rect)
+
+    #day text
+    dayTxt = dayFont.render(currentDay, True, textCol)
+    day_rect = dayTxt.get_rect(center=(screen.get_width()//2-90, screen.get_height()//2-60))
+    screen.blit(dayTxt, day_rect)
 
     #pics
     clockPic = pygame.image.load("otherStuff/clock.png")

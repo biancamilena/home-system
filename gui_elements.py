@@ -9,7 +9,7 @@ class Button:
         self.font = pygame.font.SysFont(None, 36)
         
     def draw(self, surface):
-        pygame.draw.rect(surface, self.color, self.rect)
+        pygame.draw.rect(surface, self.color, self.rect, border_radius = 30)
         txt_surf = self.font.render(self.text, True, self.textCol)
         txt_rect = txt_surf.get_rect(center=self.rect.center)
         surface.blit(txt_surf, txt_rect)

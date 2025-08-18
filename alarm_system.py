@@ -27,6 +27,7 @@ class Alarm:
     
     def turnOff(self):
         self.alarmRinging = False
+        self.alarmOn = False
         pygame.mixer.music.stop()
         
     def snooze(self, minutes=5):
