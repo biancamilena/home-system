@@ -19,10 +19,10 @@ class Button:
 
 
 class InputBox:
-    def __init__(self, x, y, w, h, text=' '):
+    def __init__(self, x, y, w, h, text=''):
         self.rect = pygame.Rect(x,y,w,h)
-        self.color_inactive = pygame.Color("#82CAFF")
-        self.color_active = pygame.Color("#1E90FF")
+        self.color_inactive = pygame.Color("#7851A9")
+        self.color_active = pygame.Color("#5f4085")
         self.color = self.color_inactive
         self.text = text
         self.txt_surface = pygame.font.SysFont(None, 40).render(text, True, (0,0,0))

@@ -7,8 +7,8 @@ from alarm_input import alarmInputScreen
 #colors
 backgroundCol = pygame.Color("#C3B1E1")
 textCol = pygame.Color("#7851A9")
-btnCol = pygame.Color("#301934")
-btnTxtCol = pygame.Color("#702670")
+btnCol = pygame.Color("#8e7ea8")
+btnTxtCol = pygame.Color("#5f4085")
 
 # initialize
 pygame.init()
@@ -23,8 +23,8 @@ alarm = Alarm()
 #buttons
 toggleBtn = Button((20,260,100,40), btnCol, "Is Off", btnTxtCol)
 setBtn = Button((140,260,120,40), btnCol, "Set Alarm", btnTxtCol)
-snoozeBtn = Button((260,260,100,40), btnCol, "Snooze", btnTxtCol)
-turnOffBtn = Button((380,260,100,40), btnCol, "Turn Off", btnTxtCol)
+snoozeBtn = Button((240,230,100,40), btnCol, "Snooze", btnTxtCol)
+turnOffBtn = Button((360,230,100,40), btnCol, "Turn Off", btnTxtCol)
 
 #--------------------------------------------------
 
@@ -49,7 +49,6 @@ while running:
                     toggleBtn.text = "Is Off"
                 elif setBtn.is_clicked(event.pos):
                     alarmInputScreen(screen, alarm, backgroundCol, textCol)
-                    pass
                 
     #update alarm
     alarm.checkAlarm()
@@ -62,16 +61,24 @@ while running:
     
     #text
     timeTxt = font.render(now,True,textCol)
-    time_rect = timeTxt.get_rect(center=(screen.get_width()//2, screen.get_height()//2))
+    time_rect = timeTxt.get_rect(center=(screen.get_width()//2-75, screen.get_height()//2))
     screen.blit(timeTxt, time_rect)
+
+    #pics
+    clockPic = pygame.image.load("otherStuff/clock.png")
+    clockPic = pygame.transform.scale(clockPic, (300,300))
+    alarmPic = pygame.image.load("otherStuff/alarmGoingOff.png")
+    alarmPic = pygame.transform.scale(alarmPic, (300,300))
     
     #draw buttons
     if alarm.alarmRinging:
         snoozeBtn.draw(screen)
         turnOffBtn.draw(screen)
+        screen.blit(alarmPic, (225,0))
     else:
         toggleBtn.draw(screen)
         setBtn.draw(screen)
+        screen.blit(clockPic, (225,0))
     
     pygame.display.flip()
     clock.tick(30) #update seconds
