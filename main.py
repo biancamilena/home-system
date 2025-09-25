@@ -3,6 +3,7 @@ from datetime import datetime
 from gui_elements import Button
 from alarm_system import Alarm
 from alarm_input import alarmInputScreen
+from pomodoro_screen import pomodoroScreen
 
 #colors
 backgroundCol = pygame.Color("#C3B1E1")
